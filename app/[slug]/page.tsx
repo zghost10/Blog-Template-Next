@@ -18,7 +18,7 @@ export const Post: React.FC<IPostProps> = async ({params}) => {
     return <>
       <title>{`${frontmatter?.title} - Blog`}</title>
   
-      <Container>
+      <Container className="my-16">
         <article className="prose lg:prose-xl dark:prose-invert">
           <h3>{frontmatter?.title}</h3>
 
@@ -30,7 +30,7 @@ export const Post: React.FC<IPostProps> = async ({params}) => {
     return <>
       <title>Post not found! - Blog</title>
 
-      <Container>
+      <Container className="my-16">
         <article className="prose lg:prose-xl dark:prose-invert">
           <h3>404 - Post not found!</h3>
 

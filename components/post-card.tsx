@@ -7,8 +7,8 @@ interface IPostCardProps {
 
 export const PostCard: React.FC<IPostCardProps> = ({post}) => {
   const {frontmatter, slug} = post;
-  return <Link href={slug} className="flex flex-col py-4 no-underline">
-    <h5>{frontmatter.title}</h5>
-    <h6>{frontmatter.description}</h6>
+  return <Link href={slug} className="flex flex-col py-2 mb-10 no-underline">
+    <h3 className="m-0">{frontmatter.title}</h3>
+    {frontmatter.description}
   </Link>
 }

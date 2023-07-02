@@ -22,7 +22,7 @@ const Page = async () => {
   return <>
     <title>Home - Blog</title>
 
-    <Container>
+    <Container className="my-16">
       <article className="prose lg:prose-xl dark:prose-invert">
         <h3>Blog home</h3>
 
