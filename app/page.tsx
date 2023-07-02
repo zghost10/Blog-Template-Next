@@ -1,10 +1,12 @@
+import { Container } from "@/components/container";
+
 const Page = () => {
   return <>
     <title>Home - Blog</title>
 
-    <div>
+    <Container>
       Blog home
-    </div>
+    </Container>
   </>
 }
 export default Page;
