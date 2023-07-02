@@ -1,4 +1,8 @@
 export interface IPost {
-  title: string;
-  description: string;
+  frontmatter: {
+    title: string;
+    description: string;
+  }
+  content: string;
+  slug: string
 }

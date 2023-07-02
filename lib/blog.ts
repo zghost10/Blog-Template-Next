@@ -31,9 +31,10 @@ export const getPostBySlug = async (slug: string) => {
     .then(postFile => {
       let { attributes, body } = matter(postFile);
       return {
-        frontmatter: attributes as IPost,
-        content: body as string
-      }
+        frontmatter: attributes,
+        content: body as string,
+        slug
+      } as IPost
     })
     .catch(() => {
       console.log('Post not found!');

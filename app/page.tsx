@@ -1,6 +1,6 @@
 import { Container } from "@/components/container";
+import { PostCard } from "@/components/post-card";
 import { getPostList } from "@/lib/blog";
-import { IPost } from "@/types/blog";
 
 const Page = async () => {
   const posts = await getPostList();
@@ -9,12 +9,8 @@ const Page = async () => {
     if(posts){
       return posts.map((post, key) => {
         if(post){
-          let { frontmatter } = post;
           return (
-            <div key={key} className="flex flex-col py-4">
-              <h5>{frontmatter.title}</h5>
-              <h6>{frontmatter.description}</h6>
-            </div>
+            <PostCard key={key} post={post}/>
           )
         }
       })
