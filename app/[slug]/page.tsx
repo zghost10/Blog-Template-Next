@@ -1,4 +1,5 @@
 import { Container } from "@/components/container";
+import { getPostBySlug } from "@/lib/blog";
 
 interface IPostProps {
   params: {
@@ -7,6 +8,8 @@ interface IPostProps {
 }
 
 export const Post: React.FC<IPostProps> = ({params}) => {
+  const content = getPostBySlug(params.slug);
+
   return <>
     <title>Post title - Blog</title>
 
