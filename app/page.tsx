@@ -5,7 +5,9 @@ const Page = () => {
     <title>Home - Blog</title>
 
     <Container>
-      Blog home
+      <article className="prose lg:prose-xl dark:prose-invert">
+        <h3>Blog home</h3>
+      </article>
     </Container>
   </>
 }
