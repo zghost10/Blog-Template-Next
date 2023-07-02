@@ -24,7 +24,7 @@ const Page = async () => {
 
     <Container className="my-16">
       <article className="prose lg:prose-xl dark:prose-invert">
-        <h3>Blog home</h3>
+        <h3>Home</h3>
 
         <div className="grid grid-cols-1 divide-y">
           <h4>Posts</h4>
