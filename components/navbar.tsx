@@ -2,7 +2,7 @@ import { Button } from "./button"
 import { Container } from "./container"
 
 export const Navbar = () => {
-  return <nav className="fixed top-0 left-0 h-28 w-screen bg-gray-900">
+  return <nav className="fixed top-0 left-0 h-28 w-screen bg-zinc-800 dark:bg-zinc-950">
     <Container className="h-full">
       <div className="flex items-center gap-8 h-full">
         <div>

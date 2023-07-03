@@ -24,10 +24,11 @@ const Page = async () => {
 
     <Container>
       <article className="prose lg:prose-xl dark:prose-invert">
-        <h3>Home</h3>
+        <h3 className="text-center">Blog Home</h3>
 
-        <div className="grid grid-cols-1 divide-y divide-black dark:divide-white">
+        <div className="grid grid-cols-1">
           <h4>Posts</h4>
+          <hr className="h-px bg-gray-300 dark:bg-zinc-900 border-0 rounded-lg"></hr>
           <PostList/>
         </div>
       </article>
