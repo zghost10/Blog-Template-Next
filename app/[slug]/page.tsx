@@ -3,13 +3,11 @@ import { getPostBySlug } from "@/lib/blog";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from 'next/link';
 
-interface IPostProps {
+const Post = async ({params}: {
   params: {
     slug: string;
   }
-}
-
-export const Post: React.FC<IPostProps> = async ({params}) => {
+}) => {
   const post = await getPostBySlug(params.slug);
 
   if(post){
@@ -22,7 +20,7 @@ export const Post: React.FC<IPostProps> = async ({params}) => {
         <article className="prose lg:prose-xl dark:prose-invert">
           <h3>{frontmatter?.title}</h3>
 
-          <MDXRemote source={content}/> 
+          <MDXRemote source={content}/>
         </article>
       </Container>
     </>
