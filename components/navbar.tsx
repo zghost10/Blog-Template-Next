@@ -9,7 +9,7 @@ export const Navbar = () => {
           <h2 className="font-bold text-3xl text-white">BLOG</h2>
         </div>
 
-        <div className="text-gray-200 text-gray-200">
+        <div className="flex">
           <Button href='/'>
             Home
           </Button>
