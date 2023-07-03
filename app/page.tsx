@@ -1,12 +1,13 @@
 import { Container } from "@/components/container";
 import { PostCard } from "@/components/post-card";
 import { getPostList } from "@/lib";
+import Link from "next/link";
 
 const Page = async () => {
   const posts = await getPostList();
 
   const PostList = () => {
-    if(posts){
+    if(posts && posts.length !== 0){
       return posts.map((post, key) => {
         if(post){
           return (
@@ -15,7 +16,11 @@ const Page = async () => {
         }
       })
     }else{
-      return <>no posts</>
+      return <article className="prose lg:prose-xl dark:prose-invert">
+        <h3>No posts to show!</h3>
+
+        But you can access the <Link href="/admin">admin panel</Link> to add some.
+      </article>
     }
   }
 
