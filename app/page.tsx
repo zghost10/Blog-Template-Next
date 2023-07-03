@@ -22,11 +22,11 @@ const Page = async () => {
   return <>
     <title>Home - Blog</title>
 
-    <Container className="my-16">
+    <Container>
       <article className="prose lg:prose-xl dark:prose-invert">
         <h3>Home</h3>
 
-        <div className="grid grid-cols-1 divide-y">
+        <div className="grid grid-cols-1 divide-y divide-black dark:divide-white">
           <h4>Posts</h4>
           <PostList/>
         </div>
