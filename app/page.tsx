@@ -23,15 +23,18 @@ const Page = async () => {
     <title>Home - Blog</title>
 
     <Container>
-      <article className="prose lg:prose-xl dark:prose-invert">
-        <h3 className="text-center">Blog Home</h3>
+      <div className="flex flex-col">
+        <h3 className="font-bold text-3xl text-center">Blog Home</h3>
 
-        <div className="grid grid-cols-1">
-          <h4>Posts</h4>
-          <hr className="h-px bg-gray-300 dark:bg-zinc-900 border-0 rounded-lg"></hr>
+        <div className="grid grid-cols-1 gap-3">
+          <div className="flex flex-col gap-3">
+            <h4 className="font-bold text-2xl">Posts</h4>
+            <hr className="h-px bg-gray-300 dark:bg-zinc-900 border-0 rounded-lg"></hr>
+          </div>
+
           <PostList/>
         </div>
-      </article>
+      </div>
     </Container>
   </>
 }
