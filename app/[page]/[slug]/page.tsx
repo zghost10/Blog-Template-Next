@@ -18,9 +18,18 @@ const Post = async ({params}: {
       <title>{`${frontmatter?.title} - Blog`}</title>
   
       <Container className="my-16">
-        <article className="prose lg:prose-xl dark:prose-invert">
-          <h3>{frontmatter?.title}</h3>
+        <div className="flex flex-col gap-3">
+          <h3 className="font-bold text-4xl">{frontmatter?.title}</h3>
+          <p className="font-normal text-xs">
+            {frontmatter.created.toString()}
+          </p>
+          <p className="font-normal text-xs">
+            #{frontmatter.category}
+          </p>
+        </div>
+        <hr className="h-px my-8 bg-gray-300 dark:bg-zinc-900 border-0 rounded-lg"></hr>
 
+        <article className="prose lg:prose-xl dark:prose-invert">
           <MDXRemote source={content}/>
         </article>
       </Container>
