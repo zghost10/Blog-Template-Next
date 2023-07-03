@@ -1,6 +1,6 @@
 import { Container } from "@/components/container";
 import { PostCard } from "@/components/post-card";
-import { getPostList } from "@/lib/blog";
+import { getPostList } from "@/lib";
 
 const Page = async () => {
   const posts = await getPostList();

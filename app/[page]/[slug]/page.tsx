@@ -1,16 +1,17 @@
 import { Container } from "@/components/container";
-import { getPostBySlug } from "@/lib/blog";
+import { getPostBySlug } from "@/lib";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Link from 'next/link';
 
 const Post = async ({params}: {
   params: {
+    page: string;
     slug: string;
   }
 }) => {
   const post = await getPostBySlug(params.slug);
 
-  if(post){
+  if(post && params.page === post.frontmatter.category.toLowerCase()){
     const { frontmatter, content } = post;
   
     return <>
