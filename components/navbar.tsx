@@ -28,7 +28,7 @@ export const Navbar = () => {
           <div className="flex justify-end items-start">
             <div className="relative flex justify-end items-center">
               <PiMagnifyingGlass className="text-emerald-800 absolute start-2 w-[1.2rem] h-[1.2rem]"/>
-              <input type="text" placeholder="Pesquisar" className="flex pl-8 pr-2 py-2 w-[9rem] bg-transparent"/>
+              <input type="text" placeholder="Search" className="flex pl-8 pr-2 py-2 w-[9rem] bg-transparent"/>
             </div>
           </div>
         </div>
