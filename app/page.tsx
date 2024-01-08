@@ -1,3 +1,4 @@
+import Card from "@/components/card";
 import { Container } from "@/components/container";
 import { PostCard } from "@/components/post-card";
 import { getPostList } from "@/lib";
@@ -27,17 +28,32 @@ const Page = async () => {
   return <>
     <title>Home - Blog</title>
 
-    <Container>
+    <Container className="my-8">
       <div className="flex flex-col">
-        <h3 className="font-bold text-3xl text-center">Blog Home</h3>
-
-        <div className="grid grid-cols-1 gap-3">
-          <div className="flex flex-col gap-3">
-            <h4 className="font-bold text-2xl">Posts</h4>
-            <hr className="h-px bg-gray-300 dark:bg-zinc-900 border-0 rounded-lg"></hr>
+        <div className="grid grid-cols-3 gap-3">
+          <div className="row-span-2 col-span-2 rounded-md">
+            <Card
+              to="/programming/nuxt"
+              title="Curabitur egestas nisi in convallis aliquam"
+              body="Proin eu diam quis augue fringilla congue. Quisque rutrum dictum augue, vel iaculis massa viverra fermentum."
+              image="https://d2jq2hx2dbkw6t.cloudfront.net/795/nuxt3-5.jpg"
+              height="22rem"
+            />
           </div>
 
-          <PostList/>
+          <Card
+            to="/programming/vercel"
+            title="Donec vulputate finibus dolor faucibus cursus"
+            body="Praesent gravida nunc enim, sed hendrerit ipsum consectetur id. Nam volutpat sodales consequat. Morbi non augue sed nisi sodales placerat."
+            image="https://assets.vercel.com/image/upload/contentful/image/e5382hct74si/FNi8e5QAED0ZtSl5uqBxe/c954730ed2f7aedfa8f83181e8bf0efb/AI-1.png"
+          />
+
+          <Card
+            to="/programming/nest"
+            title="Aliquam erat volutpat"
+            body='Etiam facilisis risus turpis, ullamcorper consectetur ligula finibus sit amet.'
+            image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSftL3emsflICWM1TAM0lmxWiPES69QVibsNeQxsHuVSEJn1766MatURCEIQi1HoszPMyU&usqp=CAU"
+          />
         </div>
       </div>
     </Container>

@@ -1,13 +1,14 @@
 import Link from 'next/link';
 
 interface IButton {
-  children?: React.ReactNode;
-  className?: string;
-  href: string;
+  children?: React.ReactNode
+  className?: string
+  href: string
+  active?: boolean
 }
 
-export const Button: React.FC<IButton> = ({children,href,className}) => {
-  return <Link href={href} className={`uppercase font-bold text-base text-gray-200 hover:text-white dark:text-gray-200 dark:hover:text-white ${className}`}>
+export const Button: React.FC<IButton> = ({children, href, className, active}) => {
+  return <Link href={href} className={`font-normal text-base hover:text-white ${active ? "text-white" : "text-gray-500 "} ${className}`}>
     {children}
   </Link>
 }

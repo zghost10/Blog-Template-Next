@@ -14,6 +14,7 @@ export interface IPost {
     title: string;
     description: string;
     category: string;
+    cover: string;
     modified: Date;
     created: Date;
   }

@@ -4,7 +4,23 @@
     "label": "Home"
   },
   {
-    "route": "/about",
-    "label": "About"
+    "route": "/my-components",
+    "label": "My Components"
+  },
+  {
+    "route": "/full-stack",
+    "label": "Full Stack"
+  },
+  {
+    "route": "/front-end",
+    "label": "Front End"
+  },
+  {
+    "route": "/back-end",
+    "label": "Back End"
+  },
+  {
+    "route": "/about-me",
+    "label": "About me"
   }
 ]
