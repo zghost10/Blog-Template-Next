@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 export const Navbar = () => {
   const path = usePathname()
 
-  return <nav className="fixed top-0 left-0 h-36 w-screen bg-zinc-950">
+  return <nav className="fixed top-0 left-0 h-36 w-screen bg-zinc-950 z-30">
     <Container className="h-full">
       <div className="flex flex-col justify-center items-center gap-8 h-full">
         <div className="grid grid-cols-3 w-full">
