@@ -15,7 +15,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar/>
 
-        <main className='flex flex-col mt-36 mb-16'>
+        <main className='flex flex-col mt-[16rem] md:mt-[14rem] mb-16'>
           {children}
         </main>
 

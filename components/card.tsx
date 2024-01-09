@@ -25,12 +25,11 @@ const Card:FC<CardProps> = ({to, image, title, body, height}) => {
   return mounted ? (
     <Link 
       href={to ?? '#'} 
-      className={'shadows '+css({
+      className={`shadows ${height ?? "w-full"} `+css({
         display: 'flex',
         flexDirection: 'column',
         borderRadius: '5px',
         padding: '1.25rem',
-        height: height ?? "100%",
         ...((thumb) && {
           backgroundImage: `url(${thumb})`
         }),
