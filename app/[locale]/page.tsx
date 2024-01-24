@@ -2,7 +2,7 @@ import Button from "@/components/button";
 import { Container } from "@/components/container";
 import { PostCard } from "@/components/postcard";
 import { Trend, TrendItem } from "@/components/trenditem";
-import { getPostList } from "@/lib";
+import { IPost } from "@/types/blog";
 import { NextPage } from "next";
 
 type PageProps = {
@@ -13,7 +13,7 @@ type PageProps = {
 }
 
 const Page: NextPage<PageProps> = async ({params}) => {
-  const list = await getPostList(params.locale)
+  const list: IPost[] = []
   const trends: Trend[] = []
   const trendingTags: String[] = []
 
