@@ -86,10 +86,7 @@ const Navbar: React.FC<IProps> = ({header}) => {
       <div className="grid grid-cols-2 md:grid-cols-4 grid-row-flow mx-4 lg:mx-20 my-4 h-full">
         <Link href='/' className="flex justify-start items-center">
           <Logo size={alt ? 70 : 50}/>
-          <p className={`hidden md:block lg:hidden ${indie.className} text-coffee-400 text-2xl`}>
-            blog
-          </p>
-          <p className={`block md:hidden lg:block  ${indie.className} text-coffee-400 text-2xl`}>
+          <p className={`${!alt ? 'block md:hidden lg:block' : 'md:hidden'} ${indie.className} text-coffee-400 text-2xl`}>
             blog.<span className="text-white">caroso.dev</span>
           </p>
         </Link>
@@ -101,7 +98,7 @@ const Navbar: React.FC<IProps> = ({header}) => {
                 route.icon !== undefined ?
                 <Button 
                   href={route.path} type="link" variant="nav"
-                  className="text-sm"
+                  className="text-sm lg:text-base"
                   active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
                   icon={route.icon}
                 >
@@ -110,7 +107,7 @@ const Navbar: React.FC<IProps> = ({header}) => {
                   :  
                 <Button
                   href={route.path} type="link" variant="nav"
-                  className="text-sm"
+                  className="text-sm lg:text-base"
                   active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
                 >
                   {route.name}
