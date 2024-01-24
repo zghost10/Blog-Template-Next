@@ -6,11 +6,12 @@ import Header from "@/components/header";
 
 const Post = async ({params}: {
   params: {
+    locale: string;
     page: string;
     slug: string;
   }
 }) => {
-  const post = await getPostBySlug(params.slug);
+  const post = await getPostBySlug(params.locale, params.slug);
 
   if(post && params.page === post.frontmatter.category.toLowerCase()){
     const { frontmatter, content } = post;
@@ -19,7 +20,7 @@ const Post = async ({params}: {
       <title>{`${frontmatter?.title} - Blog`}</title>
 
       <Header frontmatter={frontmatter}/>
-      <Container className="my-16">
+      <Container className="my-24">
         <article className="prose lg:prose-xl dark:prose-invert">
           <MDXRemote source={content}/>
         </article>
@@ -29,11 +30,9 @@ const Post = async ({params}: {
     return <>
       <title>Post not found! - Blog</title>
 
-      <Container className="my-16">
+      <Container className="my-24">
         <article className="prose lg:prose-xl dark:prose-invert">
-          <h3>404 - Post not found!</h3>
-
-          Try to write the post slug correctly or go to <Link href="/">blog home</Link> instead.
+          <p>Ops! Ainda não há nenhuma publicação.</p>
         </article>
       </Container>
     </>

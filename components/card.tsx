@@ -1,6 +1,6 @@
 'use client'
 import { css } from "@emotion/css"
-import { FC, useCallback, useEffect, useState } from "react"
+import { FC, useEffect, useState } from "react"
 import Link from "next/link"
 
 type CardProps = {

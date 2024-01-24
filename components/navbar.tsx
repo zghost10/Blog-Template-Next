@@ -1,51 +1,146 @@
-'use client'
+'use client';
+import Button from "./button";
+import { useParams, usePathname } from 'next/navigation';
+import { Indie_Flower, Nunito } from "next/font/google";
+import { Logo } from "./logo";
 import Link from "next/link";
-import { Button } from "./button"
-import { Container } from "./container"
-import navbarOptions from '@/_data/navbar.json';
-import { PiFacebookLogo, PiInstagramLogo, PiMagnifyingGlass, PiPinterestLogo } from 'react-icons/pi'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { faReact } from "@fortawesome/free-brands-svg-icons";
+import { faNewspaper, faServer, faWindowMaximize } from "@fortawesome/free-solid-svg-icons";
 
-export const Navbar = () => {
-  const path = usePathname()
+const nunito = Nunito({subsets: ['latin'], weight: '900'});
+const indie = Indie_Flower({subsets: ['latin'], weight: '400'});
 
-  return <nav className="fixed top-0 left-0 h-[16rem] md:h-[14rem] w-screen bg-zinc-950 z-30">
-    <Container className="h-full">
-      <div className="flex flex-col justify-center items-center gap-8 h-full">
-        <div className="flex flex-col gap-3 w-full">
-          <div className="flex justify-between items-center w-full">
-            <div className="flex justify-start items-center gap-3 p2">
-              <Link href="#" ><PiFacebookLogo className="text-emerald-800 w-[1.7rem] h-[1.7rem]"/></Link>
-              <Link href="#" ><PiInstagramLogo className="text-emerald-800 w-[1.7rem] h-[1.7rem]"/></Link>
-              <Link href="#" ><PiPinterestLogo className="text-emerald-800 w-[1.7rem] h-[1.7rem]"/></Link>
+export const routes = {
+  pt: [
+    {
+      icon: faNewspaper,
+      path: '/',
+      name: 'Novidades'
+    },
+    {
+      icon: faWindowMaximize,
+      path: '/front-end',
+      name: 'Front-end'
+    },
+    {
+      icon: faServer,
+      path: '/back-end',
+      name: 'Back-end'
+    },
+    {
+      icon: faReact,
+      path: '/components',
+      name: 'Componentes'
+    }
+  ],
+  en: [
+    {
+      icon: faNewspaper,
+      path: '/en',
+      name: 'Novidades'
+    },
+    {
+      icon: faWindowMaximize,
+      path: '/en/front-end',
+      name: 'Front-end'
+    },
+    {
+      icon: faServer,
+      path: '/en/back-end',
+      name: 'Back-end'
+    },
+    {
+      icon: faReact,
+      path: '/en/components',
+      name: 'Components'
+    },
+  ]
+}
+
+interface IProps {
+  header?: boolean
+}
+const Navbar: React.FC<IProps> = ({header}) => {
+  const path = usePathname();
+  const { locale } = useParams();
+
+  const [y, setY] = useState<number>(0);
+  
+  const handleScroll = () => {
+    setY(window.scrollY);
+  }
+
+  useEffect( () => {
+    setY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+  },[]);
+
+  const alt = header && y === 0;
+
+  return <nav className={`
+    ${!alt ? 'fixed top-0 left-0 backdrop-blur-sm bg-zinc-900/95 z-20' : ''}
+    ${nunito.className} font-bold text-xl w-full
+  `}>
+    <div className="container mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 grid-row-flow mx-4 lg:mx-20 my-4 h-full">
+        <Link href='/' className="flex justify-start items-center">
+          <Logo size={alt ? 70 : 50}/>
+          <p className={`hidden md:block lg:hidden ${indie.className} text-coffee-400 text-2xl`}>
+            blog
+          </p>
+          <p className={`block md:hidden lg:block  ${indie.className} text-coffee-400 text-2xl`}>
+            blog.<span className="text-white">caroso.dev</span>
+          </p>
+        </Link>
+
+        <div className="hidden md:flex md:col-span-2 justify-center items-center gap-5 z-10">
+          {routes[locale as ('pt' | 'en')].map((route, key) => (
+            <div key={key} className={!route.name ? 'hidden' : ''}>
+              {
+                route.icon !== undefined ?
+                <Button 
+                  href={route.path} type="link" variant="nav"
+                  className="text-sm"
+                  active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
+                  icon={route.icon}
+                >
+                  {route.name}
+                </Button>
+                  :  
+                <Button
+                  href={route.path} type="link" variant="nav"
+                  className="text-sm"
+                  active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
+                >
+                  {route.name}
+                </Button>
+              }
             </div>
-
-            <div className="flex justify-end items-center p-2">
-              <div className="relative flex justify-end items-center">
-                <PiMagnifyingGlass className="text-emerald-800 absolute start-2 w-[1.2rem] h-[1.2rem]"/>
-                <input type="text" placeholder="Search" className="flex pl-8 pr-2 py-2 w-[9rem] bg-transparent"/>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center items-start">
-            <h2 className="font-bold text-3xl text-white">
-              Awesome Blog
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 md:flex gap-8">
-          {navbarOptions.map((option,key) => (
-            <Button 
-              key={key} href={option.route} active={path === option.route}
-              className="text-center"
-            >
-              {option.label}
-            </Button>
           ))}
         </div>
+
+        <div className={`flex justify-end items-center gap-3`}>
+          <Button 
+            href={`https://www.caroso.dev/${locale}`}
+            type="link" 
+            variant="primary"
+            bold
+          >
+            {locale === 'pt' ? 'Portfólio' : 'Portfolio!'}
+          </Button>
+
+          <Button 
+            href={locale === 'pt' ? `/en${path}` : `${path.replace("en", "pt")}`}
+            type="link" 
+            variant="lang"
+            bold
+          >
+            {locale === 'pt' ? 'EN' : 'PT'}
+          </Button>
+        </div>
       </div>
-    </Container>
+    </div>
   </nav>
 }
+export default Navbar;

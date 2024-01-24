@@ -1,13 +1,11 @@
-import { FC, createElement } from 'react'
-import { IconType } from 'react-icons'
+import { IconDefinition } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-type TIcon = {
-  icon: IconType
-  className?: string
+const Icon: React.FC<{
+  className?: string;
+  icon: IconDefinition|any;
+  size?: number;
+}> = ({className, icon, size}) => {
+  return <FontAwesomeIcon icon={icon} className={`h-${size} w-${size} ${className??''}`} />
 }
-
-export const Icon: FC<TIcon> = ({icon, className}) => {
-  return createElement(icon, {
-    className: className ?? "w-[1.2rem] h-[1.2rem]"
-  })
-}
+export default Icon;
