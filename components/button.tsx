@@ -12,18 +12,22 @@ interface IProps {
 }
 interface IButton {
   type: "button"
+  action?: () => void
   href?: never
   target?: never
+  submit?: boolean
   active?: never
 }
 interface ILink {
   type: "link"
+  action?: never
   href?: string
   target?: 'blank'
+  submit?: never
   active?: boolean
 }
 
-const Button: React.FC<IProps & (IButton | ILink)> = ({type, href, icon, className, children, variant, active, bold, target}) => {
+const Button: React.FC<IProps & (IButton | ILink)> = ({type, action, href, icon, className, children, variant, active, bold, submit}) => {
   let styles: string = '';
   
   switch(variant){
@@ -84,7 +88,7 @@ const Button: React.FC<IProps & (IButton | ILink)> = ({type, href, icon, classNa
       </Link>
     
     default:
-      return <button className={`${className ?? ''} ${styles}`}>
+      return <button type={submit ? "submit" : "button"} onClick={action??undefined} className={`${className ?? ''} ${styles}`}>
         {
           icon ?
           children 

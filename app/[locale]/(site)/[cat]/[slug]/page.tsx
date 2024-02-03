@@ -1,28 +1,26 @@
 import { Container } from "@/components/container";
-import { getPostBySlug } from "@/lib";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import Link from 'next/link';
 import Header from "@/components/header";
+import { postRepository } from "@/services/post";
 
 const Post = async ({params}: {
   params: {
     locale: string;
-    page: string;
+    cat: string;
     slug: string;
   }
 }) => {
-  const post = await getPostBySlug(params.locale, params.slug);
+  const post = await postRepository.get(params.cat, params.slug)
 
-  if(post && params.page === post.frontmatter.category.toLowerCase()){
-    const { frontmatter, content } = post;
-  
+  if(post){
     return <>
-      <title>{`${frontmatter?.title} - Blog`}</title>
+      <title>{`${post.title} - Blog`}</title>
 
-      <Header frontmatter={frontmatter}/>
-      <Container className="my-24">
+      <Header post={post}/>
+
+      <Container className="my-10">
         <article className="prose lg:prose-xl dark:prose-invert">
-          <MDXRemote source={content}/>
+          {post.content && <MDXRemote source={post.content}/>}
         </article>
       </Container>
     </>

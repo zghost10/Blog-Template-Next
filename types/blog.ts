@@ -1,13 +1,5 @@
-export interface IPost {
-  frontmatter: {
-    title: string;
-    description: string;
-    category: string;
-    cover: string;
-    tags: string[]
-    modified: Date;
-    created: Date;
-  }
-  content: string;
-  slug: string
+import { Post, Tag } from "@prisma/client";
+
+export interface IPost extends Post{
+  tags: Tag[]
 }

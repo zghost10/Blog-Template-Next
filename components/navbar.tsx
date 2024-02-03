@@ -92,29 +92,31 @@ const Navbar: React.FC<IProps> = ({header}) => {
         </Link>
 
         <div className="hidden md:flex md:col-span-2 justify-center items-center gap-5 z-10">
-          {routes[locale as ('pt' | 'en')].map((route, key) => (
-            <div key={key} className={!route.name ? 'hidden' : ''}>
-              {
-                route.icon !== undefined ?
-                <Button 
-                  href={route.path} type="link" variant="nav"
-                  className="text-sm lg:text-base"
-                  active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
-                  icon={route.icon}
-                >
-                  {route.name}
-                </Button>
-                  :  
-                <Button
-                  href={route.path} type="link" variant="nav"
-                  className="text-sm lg:text-base"
-                  active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
-                >
-                  {route.name}
-                </Button>
-              }
-            </div>
-          ))}
+          {
+            locale === ("pt" || "en") && routes[locale].map((route, key) => (
+              <div key={key} className={!route.name ? 'hidden' : ''}>
+                {
+                  route.icon !== undefined ?
+                  <Button 
+                    href={route.path} type="link" variant="nav"
+                    className="text-sm lg:text-base"
+                    active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
+                    icon={route.icon}
+                  >
+                    {route.name}
+                  </Button>
+                    :  
+                  <Button
+                    href={route.path} type="link" variant="nav"
+                    className="text-sm lg:text-base"
+                    active={((route.path === "/" || route.path === "/en") && (path === "/" || path === "/en")) || (route.path !== "/" && route.path !== "/en" && path.includes(route.path)) ? true : false}
+                  >
+                    {route.name}
+                  </Button>
+                }
+              </div>
+            )
+          )}
         </div>
 
         <div className={`flex justify-end items-center gap-3`}>
