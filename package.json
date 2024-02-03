@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "yarn generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "pnpify prisma generate"
   },
   "dependencies": {
     "@emotion/css": "^11.11.2",
@@ -16,7 +17,6 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mdx-js/loader": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
-    "@netlify/plugin-nextjs": "^4.38.1",
     "@next/mdx": "^13.4.7",
     "@prisma/client": "^5.9.1",
     "@types/mdx": "^2.0.5",
@@ -49,6 +49,7 @@
     "@types/bcryptjs": "^2",
     "@types/jsonwebtoken": "^9",
     "@types/react-input-mask": "^2",
+    "@yarnpkg/pnpify": "^4.0.1",
     "prisma": "^5.9.1",
     "sass": "^1.63.6"
   },

@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma"
-import { Category } from "@prisma/client"
+import { Category } from "@/prisma/client"
 import { NextResponse } from "next/server"
 
 export const GET = async (req: Request) => {
